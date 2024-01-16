@@ -5,7 +5,7 @@ services:
     image: postgres:15
     container_name: db
     volumes:
-      - /fast_api/docker/db:/var/lib/postgresql/data
+      - ~/fast_api/docker/db:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
