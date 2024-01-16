@@ -1,13 +1,11 @@
 from datetime import datetime
 import uuid
 
-from fastapi import Depends
-from fastapi_users.db import SQLAlchemyUserDatabase, SQLAlchemyBaseUserTableUUID
+from fastapi_users.db import SQLAlchemyBaseUserTableUUID
 from sqlalchemy import Column, String, Boolean, Integer, TIMESTAMP, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.ext.asyncio import AsyncSession
 
-from database import Base, get_async_session
+from database import Base
 
 class AccessLvl(Base):
     __tablename__ = 'access_levels'
