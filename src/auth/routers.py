@@ -1,8 +1,10 @@
-from fastapi import APIRouter
-from auth.schemas import UserCreate, UserRead
+from fastapi import APIRouter, Depends
+from fastapi_users import schemas
 
-from auth.base_config import auth_backend
-from auth.base_config import fastapi_users
+from auth.schemas import UserCreate, UserRead
+from auth.base_config import auth_backend, fastapi_users, current_user
+from auth.models import User
+
 router = APIRouter()
 
 router.include_router(
@@ -16,3 +18,7 @@ router.include_router(
     prefix="/auth",
     tags=["auth"],
 )
+
+@router.get("/profile", tags=["auth"])
+async def get_current_user(user: User = Depends(current_user)):
+    return schemas.model_validate(UserRead, user)

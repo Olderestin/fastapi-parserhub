@@ -8,7 +8,6 @@ from typing import Optional
 class UserRead(schemas.BaseUser[uuid.UUID]):
     username: str
     email: EmailStr
-    lvl: int
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
     is_verified: Optional[bool] = False
